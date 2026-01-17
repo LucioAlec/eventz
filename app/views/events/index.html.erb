@@ -1,0 +1,25 @@
+
+<% @events.each do |e| %>
+	<section class="event">
+	<div class="image">
+		<%= image_tag(e.image_file_name) %>
+	</div>
+	<div class="summary">
+		<h2><%= link_to e.name, e %></h2>
+		<h3> <%= day_and_time(e) %> in <%= e.location %>: </h3>
+		<span class='price'>
+		<%= price(e) %>
+		</span>
+			<p>
+				<%= truncate(e.description,length: 20, separator: ' ') %>	
+			</p>
+			<p>
+				<%= e.starts_at.strftime("%B %d at %I:%M %P") %>	
+			</p>
+	</div>
+	</section>
+<% end %>
+
+<section class = "Admin">
+	<%= link_to "Add New Event", new_event_path, class: "button" %>
+</section>
