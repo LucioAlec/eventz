@@ -23,9 +23,11 @@
 			</p>
 	</div>
 	</section>
+	<% if current_user_admin? %>
+		<section class="admin">
+		<%= link_to "Edit", edit_event_path(@event), class: "button" %>
+		<%= link_to "Delete", @event, class: "button", 
+				data: { turbo_method: :delete, turbo_confirm: "Confirm Deleting Event?"} %>
+		</section>
+	<% end %>
 
-	<section class="admin">
-	<%= link_to "Edit", edit_event_path(@event), class: "button" %>
-	<%= link_to "Delete", @event, class: "button", 
-			data: { turbo_method: :delete, turbo_confirm: "Confirm Deleting Event?"} %>
-	</section>
