@@ -22,6 +22,18 @@
 				<%= @event.starts_at.strftime("%B %d at %I:%M %P") %>	
 			</p>
 	</div>
+	<aside>
+		<%if @likers.present? %>
+			<h4> Liked by </h4>
+			<ul>
+				<% @likers.each do |user| %>
+					<li>
+						<%= link_to user.name, user %>
+					</li>
+				<% end %>
+			</ul>
+		<% end %>
+	</aside>
 	</section>
 	<% if current_user_admin? %>
 		<section class="admin">
